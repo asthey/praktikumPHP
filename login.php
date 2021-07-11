@@ -4,7 +4,7 @@ session_start();
 if(isset($_POST['login'])){
 	$email = $_POST['email'];
 	$password = md5( $_POST['password']);
-	$sql = "SELECT * from login where email='$email' and password='$password'";
+	$sql = "SELECT * from daftar where email='$email' and password='$password'";
 	$con = mysqli_query($koneksi, $sql);
 	$jawaban = mysqli_num_rows($con);
 	if ($jawaban > 0) {
@@ -31,12 +31,12 @@ if(isset($_POST['login'])){
 
 		<title>Login Data Buku</title>
 	</head>
-	<body style="background-color: snow">
+	<body style="background-color: #7C83FD">
 		
 		<div class="container" id="login">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="text-center" style="color: pink">Data Buku</h4>
+					<h4 class="text-center" style="color: #7C83FD">Data Buku</h4>
 					<form method="post" action="">
 					
 						<div class="mb-3 mt-3">
@@ -47,21 +47,19 @@ if(isset($_POST['login'])){
 							
 							<label for="password" class="form-label">Password</label>
 							<input type="password" class="form-control" id="password" name="password" required />
-							<div id="emailHelp" class="form-text">Masukkan Kata Sandi yang Sesuai</div>
+							<div id="emailHelp" class="form-text">Masukkan kata sandi yang benar</div>
 						</div>
 						<div id="button">
-							<button type="submit" class="btn btn-primary" style="color: #fbfbfb; background-color: #be768d" name="login">Sign In</button>
+							<button type="submit" class="btn btn-primary" style="color: #96BAFF; background-color: #7C83FD" name="login">Login</button>
 						</div>
 						<div id="button">
-							<a href="daftar.php">Daftar</a>
+							<a href="register.php">Daftar</a>
 						</div>
 						
 					</form>
 				</div>
 			</div>
 		</div>
-
-		<footer class="container" id="footer">Rio Anggara Alfat Nur - 20191040024</footer>
 		
 		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
