@@ -5,19 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <title>Data Mahasiswa</title>
+    <title>Data Buku</title>
   </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Data Mahasiswa</a>
+            <a class="navbar-brand" href="#">Data Buku</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto"> <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Tambah Mahasiswa</a>
+            <a class="nav-link active" aria-current="page" href="#">Tambah Buku</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -41,20 +41,22 @@
     <?php    
     include 'config.php';
     $id = $_GET['id'];
-    $mahasiswa = mysqli_query($koneksi, "select * from mahasiswa where id = '$id'");
-    while($data = mysqli_fetch_assoc($mahasiswa)){
+    $buku = mysqli_query($koneksi, "select * from databuku where id = '$id'");
+    while($data = mysqli_fetch_assoc($buku)){
     ?>
         <div class="container mt-5">
-            <p><a href="index.php">Home</a> / Detail Mahasiswa / <?php echo $data['nama'] ?></p>
+            <p><a href="index.php">Home</a> / Detail Buku / <?php echo $data['nama'] ?></p>
             <div class="card">
                 <div class="card-header">
-                    <p class="fw-bold">Profil Mahasiswa</p>
+                    <p class="fw-bold">Profil Buku</p>
                 </div>
                 <div class="card-body fw-bold">
                     <p>Nama :   <?php echo $data['nama'] ?></p>
-                    <p>NIM :   <?php echo $data['nim'] ?></p>
-                    <p>Alamat :   <?php echo $data['alamat'] ?></p>
-                    <a href="print.php?id" class="btn btn-primary btn-sm text-white">CETAK</a>  
+                    <p>Kategori :   <?php echo $data['kategori'] ?></p>
+                    <p>Penerbit :   <?php echo $data['penerbit'] ?></p>
+                    <p>Harga :   <?php echo $data['harga'] ?></p>
+                    <p>Diskon :   <?php echo $data['diskon'] ?></p>
+                    <a href="print.php?id=<?php echo $data['id']; ?>" class="btn btn-success btn-sm text-white">Cetak</a>
                 </div>
             </div>
         </div>

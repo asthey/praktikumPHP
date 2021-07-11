@@ -67,17 +67,21 @@
                         <!--Input nama-->
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Mahasiswa" name="nama" required>
+                            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Buku" name="nama" required>
                         </div>
                         <!--Input nim-->
                         <div class="mb-3">
-                            <label for="NIM" class="form-label">NIM</label>
-                            <input type="text" class="form-control" id="NIM" placeholder="Masukkan NIM Mahasiswa" name="nim" required>
+                            <label for="kategori" class="form-label">Kategori</label>
+                            <input type="text" class="form-control" id="kategori" placeholder="Masukkan Kategori" name="kategori" required>
                         </div>
                         <!--Input alamat-->
                         <div class="mb-3">
-                            <label for="Alamat" class="form-label">Alamat</label>
-                            <textarea type="text" class="form-control" id="Alamat" placeholder="Masukkan Alamat Mahasiswa" name="alamat" required></textarea>
+                            <label for="penerbit" class="form-label">Penerbit</label>
+                            <textarea type="text" class="form-control" id="penerbit" placeholder="Masukkan Penerbit" name="penerbit" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga" class="form-label">Harga</label>
+                            <textarea type="text" class="form-control" id="harga" placeholder="Masukkan Harga" name="harga" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -89,23 +93,23 @@
         </div>
     </div>
     <!---Akhir Modal-->
-    <table class="table table-striped" id="tabelMahasiswa">
+    <table class="table table-striped" id="databuku">
         <thead>
             <tr>
             <th scope="col">No.</th>
             <th scope="col">Nama</th>
-            <th scope="col">NIM</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Aksi</th>
+            <th scope="col">Kategori</th>
+            <th scope="col">Penerbit</th>
+            <th scope="col">Harga</th>
             </tr>
         </thead>
         <tbody>
         <?php
             include 'config.php';
             $no = 1;
-            $mahasiswa = mysqli_query($koneksi, "select * from mahasiswa");
+            $buku = mysqli_query($koneksi, "select * from databuku");
 
-            while ($data = mysqli_fetch_array($mahasiswa)){
+            while ($data = mysqli_fetch_array($buku)){
 
             
         ?>
@@ -113,11 +117,12 @@
         <tr>
             <th scope="row"><?php echo $no++; ?></th>
             <td><?php echo $data['nama']; ?></td>
-            <td><?php echo $data['nim']; ?></td>
-            <td><?php echo $data['alamat']; ?></td>
+            <td><?php echo $data['kategori']; ?></td>
+            <td><?php echo $data['penerbit']; ?></td>
+            <td><?php echo $data['harga']; ?></td>
             <td>
-                <a href="print.php?id=<?php echo $data['id']; ?>" class="btn btn-success btn-sm text-white">Cetak</a>
-                <a href="edit.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm text-white">EDIT</a>
+                <a href="detail.php?id=<?php echo $data['id']; ?>" class="btn btn-success btn-sm text-white">Detail</a>
+                <a href="edit.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm text-white">EDIT</a>  
                 <a href="delete.php?id=<?php echo $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm ('Anda Yakin Akan Menghapus Data Mahasiswa Ini ?')">HAPUS</a>
             </td>
         </tr>
@@ -133,7 +138,7 @@
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#tabelMahasiswa').DataTable();
+            $('#databuku').DataTable();
         } );
     </script>
 </body>

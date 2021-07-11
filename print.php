@@ -1,8 +1,8 @@
 <?php
 include 'config.php';
 $id =$_GET['id'];
-$mahasiswa = mysqli_query($koneksi, "select * from mahasiswa where id='$id'");
-while ($data = mysqli_fetch_assoc($mahasiswa)){
+$buku = mysqli_query($koneksi, "select * from databuku where id='$id'");
+while ($data = mysqli_fetch_assoc($buku)){
 ?>
     <!doctype html>
     <html lang="en">
@@ -15,10 +15,11 @@ while ($data = mysqli_fetch_assoc($mahasiswa)){
     </head>
     <body onload="window.print();">
         <div class="container mt-5">
-            <p class="fw-bold">Profil Mahasiswa</p>
+            <p class="fw-bold">Profil Buku</p>
             <p>Nama : <?php echo $data['nama']?></p>
-            <p>NIM : <?php echo $data['nim']?></p>
-            <p>Alamat : <?php echo $data['alamat']?></p>
+            <p>Kategori : <?php echo $data['kategori']?></p>
+            <p>Penerbit : <?php echo $data['penerbit']?></p>
+            <p>Harga : <?php echo $data['harga']?></p>
         </div>
     <?php
 }

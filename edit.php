@@ -7,12 +7,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
-    <title>Data Mahasiswa</title>
+    <title>Data Buku</title>
   </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Data Mahasiswa</a>
+    <a class="navbar-brand" href="#">Data Buku</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,15 +29,15 @@
   <?php
   include 'config.php';
   $id = $_GET['id'];
-  $mahasiswa = mysqli_query($koneksi, "select * from mahasiswa where id='$id'");
+  $buku = mysqli_query($koneksi, "select * from databuku where id='$id'");
 
-  while($data = mysqli_fetch_assoc($mahasiswa)){
+  while($data = mysqli_fetch_assoc($buku)){
   ?>
     <div class="container mt-5">
-        <p><a href="index.php">Home</a> / Edit Mahasiswa / <?php echo $data['nama'] ?></p>
+        <p><a href="index.php">Home</a> / Edit Buku / <?php echo $data['nama'] ?></p>
         <div class="card">
             <div class="card-header">
-                <p class="fw-bold">Profil Mahasiswa</p>
+                <p class="fw-bold">Profil Buku</p>
             </div>
             <div class="card-body fw-bold">
                 <form  method="post" action="update.php"> 
@@ -46,15 +46,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Mahasiswa" name="nama" value="<?php echo $data['nama']; ?>">
+                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Buku" name="nama" value="<?php echo $data['nama']; ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="NIM" class="form-label">NIM</label>
-                        <input type="text" class="form-control" id="NIM" placeholder="Masukkan NIM Mahasiswa" name="nim" value="<?php echo $data['nim']; ?>">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <input type="text" class="form-control" id="kategori" placeholder="Masukkan Kategori" name="kategori" value="<?php echo $data['kategori']; ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="Alamat" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="Alamat" placeholder="Masukkan Alamat Mahasiswa" name="alamat" value="<?php echo $data['alamat']; ?>">
+                        <label for="penerbit" class="form-label">Penerbit</label>
+                        <input type="text" class="form-control" id="penerbit" placeholder="Masukkan Penerbit" name="penerbit" value="<?php echo $data['penerbit']; ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="harga" class="form-label">Harga</label>
+                        <input type="text" class="form-control" id="harga" placeholder="Masukkan Harga" name="harga" value="<?php echo $data['harga']; ?>">
                     </div>
                     <button type="submit" class="btn btn-primary" values="SIMPAN">Update</button>
                 </form>
